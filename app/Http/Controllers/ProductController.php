@@ -19,17 +19,27 @@ class ProductController extends Controller
     }
 
     public function store(Request $request)
-    {
-        $request->validate([
-            'naam' => 'required',
-            'prijs' => 'required|numeric',
-            'omschrijving' => 'nullable',
-            'categorie' => 'required',
-        ]);
+{
+    $request->validate([
+        'naam' => 'required',
+        'prijs' => 'required|numeric',
+        'omschrijving' => 'nullable',
+        'categorie' => 'required',
+        'foto' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+    ]);
 
-        Product::create($request->all());
-        return redirect()->route('producten.index')->with('success', 'Product toegevoegd!');
+    $data = $request->all();
+
+    if ($request->hasFile('foto')) {
+        $pad = $request->file('foto')->store('producten', 'public');
+        $data['foto'] = $pad;
     }
+
+    Product::create($data);
+
+    return redirect()->route('producten.index')->with('success', 'Product toegevoegd!');
+}
+
 
     public function edit(Product $product)
     {
@@ -37,17 +47,27 @@ class ProductController extends Controller
     }
 
     public function update(Request $request, Product $product)
-    {
-        $request->validate([
-            'naam' => 'required',
-            'prijs' => 'required|numeric',
-            'omschrijving' => 'nullable',
-            'categorie' => 'required',
-        ]);
+{
+    $request->validate([
+        'naam' => 'required',
+        'prijs' => 'required|numeric',
+        'omschrijving' => 'nullable',
+        'categorie' => 'required',
+        'foto' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+    ]);
 
-        $product->update($request->all());
-        return redirect()->route('producten.index')->with('success', 'Product bijgewerkt!');
+    $data = $request->all();
+
+    if ($request->hasFile('foto')) {
+        $pad = $request->file('foto')->store('producten', 'public');
+        $data['foto'] = $pad;
     }
+
+    $product->update($data);
+
+    return redirect()->route('producten.index')->with('success', 'Product bijgewerkt!');
+}
+
 
     public function destroy(Product $product)
     {

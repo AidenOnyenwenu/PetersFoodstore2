@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="nl">
+
 <head>
     <meta charset="UTF-8">
     <title>Nieuw Product</title>
 </head>
+
 <body>
     <h1>Nieuw product toevoegen</h1>
 
@@ -17,7 +19,7 @@
         </div>
     @endif
 
-    <form action="{{ route('producten.store') }}" method="POST">
+    <form action="{{ route('producten.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <label>Naam:</label><br>
         <input type="text" name="naam" value="{{ old('naam') }}"><br><br>
@@ -31,9 +33,13 @@
         <label>Categorie:</label><br>
         <input type="text" name="categorie" value="{{ old('categorie') }}"><br><br>
 
+        <label>Foto:</label><br>
+        <input type="file" name="foto"><br><br>
+
         <button type="submit">Opslaan</button>
     </form>
 
     <p><a href="{{ route('producten.index') }}">⬅ Terug naar overzicht</a></p>
 </body>
+
 </html>

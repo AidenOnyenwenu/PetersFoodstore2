@@ -1,11 +1,13 @@
 @vite('resources/css/app.css')
 <!DOCTYPE html>
 <html lang="nl">
+
 <head>
     <meta charset="UTF-8">
     <title>Producten - Peters Foodstore</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body>
     <div class="header">
         <h1>Peters Foodstore</h1>
@@ -13,7 +15,7 @@
     </div>
 
     <div class="container">
-        @if(session('success'))
+        @if (session('success'))
             <div class="alert alert-success">{{ session('success') }}</div>
         @endif
 
@@ -31,28 +33,39 @@
                         <th>Prijs</th>
                         <th>Omschrijving</th>
                         <th>Categorie</th>
+                        <th>Foto</th>
                         <th>Acties</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($producten as $product)
+                    @foreach ($producten as $product)
                         <tr>
                             <td>{{ $product->naam }}</td>
                             <td>€{{ number_format($product->prijs, 2, ',', '.') }}</td>
                             <td>{{ $product->omschrijving }}</td>
                             <td>{{ $product->categorie }}</td>
                             <td>
-                                <a href="{{ route('producten.edit', $product) }}" class="btn btn-sm btn-primary">Bewerken</a>
+                                @if ($product->foto)
+                                    <img src="{{ asset('storage/' . $product->foto) }}" alt="Foto" width="80">
+                                @else
+                                    Geen foto
+                                @endif
+                            </td>
+                            <td>
+                                <a href="{{ route('producten.edit', $product) }}"
+                                    class="btn btn-sm btn-primary">Bewerken</a>
 
-                                <form action="{{ route('producten.destroy', $product) }}" method="POST" style="display:inline-block;">
+                                <form action="{{ route('producten.destroy', $product) }}" method="POST"
+                                    style="display:inline-block;">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Weet je zeker dat je dit product wilt verwijderen?')">Verwijderen</button>
+                                    <button type="submit" class="btn btn-sm btn-danger"
+                                        onclick="return confirm('Weet je zeker dat je dit product wilt verwijderen?')">Verwijderen</button>
                                 </form>
                             </td>
                         </tr>
                     @endforeach
-                    @if($producten->isEmpty())
+                    @if ($producten->isEmpty())
                         <tr>
                             <td colspan="5" class="text-center">Geen producten gevonden</td>
                         </tr>
@@ -62,4 +75,5 @@
         </div>
     </div>
 </body>
+
 </html>

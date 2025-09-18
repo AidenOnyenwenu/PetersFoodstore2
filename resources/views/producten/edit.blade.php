@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="nl">
+
 <head>
     <meta charset="UTF-8">
     <title>Product bewerken</title>
 </head>
+
 <body>
     <h1>Product bewerken</h1>
 
@@ -17,7 +19,7 @@
         </div>
     @endif
 
-    <form action="{{ route('producten.update', $product) }}" method="POST">
+    <form action="{{ route('producten.update', $product) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
@@ -33,9 +35,16 @@
         <label>Categorie:</label><br>
         <input type="text" name="categorie" value="{{ old('categorie', $product->categorie) }}"><br><br>
 
+        <label>Foto:</label><br>
+        @if ($product->foto)
+            <img src="{{ asset('storage/' . $product->foto) }}" alt="Product foto" width="150"><br>
+        @endif
+        <input type="file" name="foto"><br><br>
+
         <button type="submit">Bijwerken</button>
     </form>
 
     <p><a href="{{ route('producten.index') }}">⬅ Terug naar overzicht</a></p>
 </body>
+
 </html>

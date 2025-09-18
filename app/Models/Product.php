@@ -16,5 +16,6 @@ class Product extends Model
         'prijs',
         'omschrijving',
         'categorie',
+        'foto',
     ];
 }
