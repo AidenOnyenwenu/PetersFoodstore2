@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 
 class ProductController extends Controller
 {
@@ -59,6 +61,12 @@ class ProductController extends Controller
     $data = $request->all();
 
     if ($request->hasFile('foto')) {
+        // Oude foto verwijderen als die bestaat
+        if ($product->foto && Storage::disk('public')->exists($product->foto)) {
+            Storage::disk('public')->delete($product->foto);
+        }
+
+        // Nieuwe foto opslaan
         $pad = $request->file('foto')->store('producten', 'public');
         $data['foto'] = $pad;
     }
@@ -69,9 +77,17 @@ class ProductController extends Controller
 }
 
 
+
     public function destroy(Product $product)
-    {
-        $product->delete();
-        return redirect()->route('producten.index')->with('success', 'Product verwijderd!');
+{
+    // Foto verwijderen als die bestaat
+    if ($product->foto && Storage::disk('public')->exists($product->foto)) {
+        Storage::disk('public')->delete($product->foto);
     }
+
+    $product->delete();
+
+    return redirect()->route('producten.index')->with('success', 'Product verwijderd!');
+}
+
 }
