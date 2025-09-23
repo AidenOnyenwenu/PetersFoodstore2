@@ -5,7 +5,7 @@ use App\Http\Controllers\MedewerkerController;
 use App\Http\Controllers\ProductController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Route::get('/test', function () {
