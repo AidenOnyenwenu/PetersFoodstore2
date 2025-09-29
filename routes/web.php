@@ -6,6 +6,12 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ReserveringenController;
 
 // Voor testpagina
+use App\Http\Controllers\SandwichController;
+
+Route::get('/', function () {
+    return view('home');
+});
+
 Route::get('/test', function () {
     return view('test');
 });
@@ -22,3 +28,4 @@ Route::resource('reserveringen', ReserveringenController::class)->parameters([
 ]);
 
 
+Route::resource('sandwiches', SandwichController::class);
