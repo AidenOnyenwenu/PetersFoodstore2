@@ -7,7 +7,8 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f6f8;
+            background-color: #FEF3E2; /* Lichte achtergrond */
+            color: #000; /* Alle tekst zwart */
             margin: 0;
             padding: 0;
         }
@@ -21,7 +22,6 @@
         }
         h1, h2 {
             text-align: center;
-            color: #333;
         }
         form {
             display: flex;
@@ -34,14 +34,14 @@
             font-weight: bold;
             margin-bottom: 5px;
             display: block;
-            color: #555;
         }
         input, textarea {
             width: 100%;
             padding: 10px;
             border-radius: 5px;
-            border: 1px solid #ccc;
+            border: 1px solid #ccc; /* neutraal grijs */
             box-sizing: border-box;
+            color: #000; /* tekst zwart */
         }
         textarea {
             resize: vertical;
@@ -50,25 +50,25 @@
             padding: 12px;
             border: none;
             border-radius: 5px;
-            background-color: #28a745;
+            background-color: #DD0303; /* knop rood */
             color: white;
             font-size: 16px;
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
         button:hover {
-            background-color: #218838;
+            background-color: #a00202; /* donkerder rood bij hover */
         }
         .alert {
-            background-color: #d4edda;
-            color: #155724;
+            background-color: #f8d7da; /* lichte rood tint voor melding */
+            color: #721c24;
             padding: 12px;
             border-radius: 5px;
             margin-bottom: 20px;
             text-align: center;
         }
         .error {
-            color: #dc3545;
+            color: #DD0303; /* rode error */
             font-size: 0.9em;
             margin-top: 5px;
         }
