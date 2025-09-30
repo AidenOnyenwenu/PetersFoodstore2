@@ -5,20 +5,6 @@
     <meta charset="UTF-8">
     <title>Nieuwe Reservering</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f6f8;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            max-width: 600px;
-            margin: 50px auto;
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
         h1, h2 {
             text-align: center;
             color: #333;
@@ -46,16 +32,6 @@
         textarea {
             resize: vertical;
         }
-        button {
-            padding: 12px;
-            border: none;
-            border-radius: 5px;
-            background-color: #28a745;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
         button:hover {
             background-color: #218838;
         }
@@ -75,7 +51,16 @@
     </style>
 </head>
 <body>
-    <div class="container">
+        <!-- Navbar -->
+    @include('partials.navigation')
+     @include('partials.header', [
+        'title' => 'Reserveren',
+        'subtitle' => '
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam maximus augue leo, ac fermentum dolor bibendum tristique. Sed sed nibh.',
+        'image' => 'https://lh3.googleusercontent.com/gps-cs-s/AC9h4no4YEl0bpio3Dz3LnHTURqI5KoO5GFePI-OtTe3AtESeT-DCkGZDcnj7yyd0Iv5rLJEhqhFf78Z9HSUTjONnH3cXpBNFFnXkfzFxR0bhH6pmqX8cCcqYfkWikgKJt_torX1Z8ai=s1360-w1360-h1020-rw' // pad vanuit public/
+    ])
+    <div class="bg-color-standard content-section">
+    <div class="container ">
         <h1>Maak een Reservering</h1>
 
         <!-- Success message -->
@@ -129,5 +114,7 @@
             <button type="submit">Reservering Versturen</button>
         </form>
     </div>
+    </div>
+     @include('partials.footer')
 </body>
 </html>

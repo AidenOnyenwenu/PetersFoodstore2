@@ -16,7 +16,7 @@ Route::get('/test', function () {
     return view('test');
 });
 
-// Resource routes
+// Resource routes  
 Route::resource('medewerkers', MedewerkerController::class);
 
 Route::resource('producten', ProductController::class)->parameters([
