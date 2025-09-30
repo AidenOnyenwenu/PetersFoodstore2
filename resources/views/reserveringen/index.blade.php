@@ -5,24 +5,6 @@
     <meta charset="UTF-8">
     <title>Nieuwe Reservering</title>
     <style>
-<<<<<<< HEAD
-=======
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #FEF3E2; /* Lichte achtergrond */
-            color: #000; /* Alle tekst zwart */
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            max-width: 600px;
-            margin: 50px auto;
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
->>>>>>> d794b4b29d1129fe6ed2150cb7b35c835a2a886a
         h1, h2 {
             text-align: center;
         }

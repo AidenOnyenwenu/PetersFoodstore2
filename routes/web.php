@@ -9,8 +9,9 @@ use App\Http\Controllers\TafelController; // ✅ toegevoegd
 
 // Redirect home naar ReserveringenController
 Route::get('/', function () {
-    return redirect()->route('reserveringen.index');
+    return view('home');
 });
+
 
 Route::get('/test', function () {
     return view('test');
