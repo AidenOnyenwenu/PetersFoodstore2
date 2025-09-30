@@ -5,9 +5,26 @@
     <meta charset="UTF-8">
     <title>Nieuwe Reservering</title>
     <style>
+<<<<<<< HEAD
+=======
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #FEF3E2; /* Lichte achtergrond */
+            color: #000; /* Alle tekst zwart */
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+>>>>>>> d794b4b29d1129fe6ed2150cb7b35c835a2a886a
         h1, h2 {
             text-align: center;
-            color: #333;
         }
         form {
             display: flex;
@@ -20,31 +37,31 @@
             font-weight: bold;
             margin-bottom: 5px;
             display: block;
-            color: #555;
         }
         input, textarea {
             width: 100%;
             padding: 10px;
             border-radius: 5px;
-            border: 1px solid #ccc;
+            border: 1px solid #ccc; /* neutraal grijs */
             box-sizing: border-box;
+            color: #000; /* tekst zwart */
         }
         textarea {
             resize: vertical;
         }
         button:hover {
-            background-color: #218838;
+            background-color: #a00202; /* donkerder rood bij hover */
         }
         .alert {
-            background-color: #d4edda;
-            color: #155724;
+            background-color: #f8d7da; /* lichte rood tint voor melding */
+            color: #721c24;
             padding: 12px;
             border-radius: 5px;
             margin-bottom: 20px;
             text-align: center;
         }
         .error {
-            color: #dc3545;
+            color: #DD0303; /* rode error */
             font-size: 0.9em;
             margin-top: 5px;
         }

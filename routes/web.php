@@ -4,12 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MedewerkerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ReserveringenController;
-
-// Voor testpagina
 use App\Http\Controllers\SandwichController;
+use App\Http\Controllers\TafelController; // ✅ toegevoegd
 
+// Redirect home naar ReserveringenController
 Route::get('/', function () {
-    return view('home');
+    return redirect()->route('reserveringen.index');
 });
 
 Route::get('/test', function () {
@@ -27,5 +27,11 @@ Route::resource('reserveringen', ReserveringenController::class)->parameters([
     'reserveringen' => 'reservering'
 ]);
 
-
 Route::resource('sandwiches', SandwichController::class);
+
+// ✅ nieuwe route voor tafels
+Route::resource('tafels', TafelController::class)->parameters([
+    'tafels' => 'tafel'
+]);
+
+
