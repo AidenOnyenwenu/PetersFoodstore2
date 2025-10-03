@@ -26,6 +26,24 @@ class TafelController extends Controller
             ->with('success', "Tafel '{$tafel->soort}' ({$tafel->aantal}x) succesvol toegevoegd! ✅");
     }
 
+    public function edit(Tafel $tafel)
+    {
+        return view('tafels.edit', compact('tafel'));
+    }
+
+    public function update(Request $request, Tafel $tafel)
+    {
+        $request->validate([
+            'soort' => 'required|string|max:255',
+            'aantal' => 'required|integer|min:1',
+        ]);
+
+        $tafel->update($request->only(['soort', 'aantal']));
+
+        return redirect()->route('tafels.index')
+            ->with('success', "Tafel '{$tafel->soort}' succesvol bijgewerkt! ✏️");
+    }
+
     public function destroy(Tafel $tafel)
     {
         $tafel->delete();

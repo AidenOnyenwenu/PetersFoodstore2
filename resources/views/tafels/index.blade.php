@@ -64,6 +64,10 @@
             font-weight: bold;
             text-align: center;
         }
+        .action-buttons {
+            display: flex;
+            gap: 5px;
+        }
     </style>
 </head>
 <body>
@@ -98,7 +102,11 @@
                 <td>{{ $tafel->soort }}</td>
                 <td>{{ $tafel->aantal }}</td>
                 <td>{{ $tafel->created_at->format('d-m-Y H:i') }}</td>
-                <td>
+                <td class="action-buttons">
+                    <!-- Edit knop -->
+                    <a href="{{ route('tafels.edit', $tafel) }}"><button type="button">Bewerk</button></a>
+
+                    <!-- Delete knop -->
                     <form action="{{ route('tafels.destroy', $tafel) }}" method="POST" style="display:inline;">
                         @csrf
                         @method('DELETE')
@@ -111,3 +119,4 @@
 </div>
 </body>
 </html>
+

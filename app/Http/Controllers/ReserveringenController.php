@@ -7,69 +7,70 @@ use Illuminate\Http\Request;
 
 class ReserveringenController extends Controller
 {
-    // Toon alle reserveringen
+    // Index voor admin
     public function index()
     {
         $reserveringen = Reservering::all();
-        return view('reserveringen.index', compact('reserveringen'));
+        return view('reserveringen.admin.index', compact('reserveringen'));
     }
 
-    // Toon formulier voor nieuwe reservering
+    // Klant: reservering maken
     public function create()
     {
         return view('reserveringen.create');
     }
 
-    // Opslaan van nieuwe reservering
+    // Opslaan van reservering (klant)
     public function store(Request $request)
     {
-        $data = $request->validate([
+        $request->validate([
             'klant_naam' => 'required|string|max:255',
-            'email' => 'required|email',
+            'email' => 'required|email|max:255',
             'telefoonnummer' => 'nullable|string|max:20',
             'datum' => 'required|date',
             'tijd' => 'required',
             'aantal_personen' => 'required|integer|min:1',
-            'opmerkingen' => 'nullable|string',
+            'opmerkingen' => 'nullable|string|max:500',
         ]);
 
-        Reservering::create($data);
+        Reservering::create($request->all());
 
-        return redirect()->route('reserveringen.index')
-                         ->with('success', 'Reservering succesvol toegevoegd!');
+        return redirect()->route('reserveringen.create')->with('success', 'Reservering succesvol toegevoegd!');
     }
 
-    // Toon formulier om reservering te bewerken
+    // Admin: bewerken
     public function edit(Reservering $reservering)
     {
         return view('reserveringen.edit', compact('reservering'));
     }
 
-    // Update een bestaande reservering
+    // Admin: update
     public function update(Request $request, Reservering $reservering)
     {
-        $data = $request->validate([
+        $request->validate([
             'klant_naam' => 'required|string|max:255',
-            'email' => 'required|email',
+            'email' => 'required|email|max:255',
             'telefoonnummer' => 'nullable|string|max:20',
             'datum' => 'required|date',
             'tijd' => 'required',
             'aantal_personen' => 'required|integer|min:1',
-            'opmerkingen' => 'nullable|string',
+            'opmerkingen' => 'nullable|string|max:500',
         ]);
 
-        $reservering->update($data);
+        $reservering->update($request->all());
 
-        return redirect()->route('reserveringen.index')
-                         ->with('success', 'Reservering bijgewerkt!');
+        return redirect()->route('admin.reserveringen.index')->with('success', 'Reservering bijgewerkt!');
     }
 
-    // Verwijder een reservering
+    // Admin: verwijderen
     public function destroy(Reservering $reservering)
     {
         $reservering->delete();
-
-        return redirect()->route('reserveringen.index')
-                         ->with('success', 'Reservering verwijderd!');
+        return redirect()->route('admin.reserveringen.index')->with('success', 'Reservering verwijderd!');
     }
 }
+
+
+
+
+

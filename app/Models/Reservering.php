@@ -2,10 +2,15 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Reservering extends Model
 {
+    use HasFactory;
+
+    protected $table = 'reserverings';
+
     protected $fillable = [
         'klant_naam',
         'email',
@@ -13,6 +18,6 @@ class Reservering extends Model
         'datum',
         'tijd',
         'aantal_personen',
-        'opmerkingen'
+        'opmerkingen',
     ];
-} 
+}
