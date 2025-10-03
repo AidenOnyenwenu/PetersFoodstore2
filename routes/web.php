@@ -7,7 +7,7 @@ use App\Http\Controllers\ReserveringenController;
 use App\Http\Controllers\SandwichController;
 use App\Http\Controllers\TafelController;
 use App\Http\Controllers\ReviewController;
-
+use App\Http\Controllers\DrankController;
 
 Route::get('/', function () {
     return view('home');
@@ -39,3 +39,6 @@ Route::resource('reviews', ReviewController::class)->parameters([
     'reviews' => 'review'
 ]);
 
+Route::resource('dranken', DrankController::class)->parameters([
+    'dranken' => 'drank'
+]);
