@@ -6,6 +6,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ReserveringenController;
 use App\Http\Controllers\SandwichController;
 use App\Http\Controllers\TafelController;
+<<<<<<< HEAD
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,16 @@ Route::get('/', function () {
 });
 
 // Testpagina
+=======
+use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\DrankController;
+
+Route::get('/', function () {
+    return view('home');
+});
+
+
+>>>>>>> 60687ab442bc0ba6dd3e35b795ed98536e221543
 Route::get('/test', function () {
     return view('test');
 });
@@ -35,10 +46,15 @@ Route::resource('reserveringen', ReserveringenController::class)->parameters([
     'reserveringen' => 'reservering'
 ]);
 Route::resource('sandwiches', SandwichController::class);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 60687ab442bc0ba6dd3e35b795ed98536e221543
 Route::resource('tafels', TafelController::class)->parameters([
     'tafels' => 'tafel'
 ]);
 
+<<<<<<< HEAD
 /*
 |--------------------------------------------------------------------------
 | Admin routes
@@ -66,4 +82,12 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::resource('medewerkers', MedewerkerController::class);
     Route::resource('sandwiches', SandwichController::class);
 });
+=======
+Route::resource('reviews', ReviewController::class)->parameters([
+    'reviews' => 'review'
+]);
+>>>>>>> 60687ab442bc0ba6dd3e35b795ed98536e221543
 
+Route::resource('dranken', DrankController::class)->parameters([
+    'dranken' => 'drank'
+]);

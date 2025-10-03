@@ -8,18 +8,17 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('producten', function (Blueprint $table) {
+        Schema::create('reviews', function (Blueprint $table) {
             $table->id();
-            $table->string('naam');
-            $table->decimal('prijs', 8, 2);
-            $table->text('omschrijving')->nullable();
-            $table->string('categorie');
+            $table->string('klantnaam');
+            $table->tinyInteger('beoordeling'); // 1 t/m 5 sterren
+            $table->text('opmerking')->nullable();
             $table->timestamps();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('producten');
+        Schema::dropIfExists('reviews');
     }
 };
